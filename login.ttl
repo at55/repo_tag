@@ -1,0 +1,25 @@
+;;;;;;;;;;;;;;;設定 ;;;;;;;;;;;;;;;
+;ユーザ名
+username = 'ec2-user'
+ 
+;秘密鍵ファイルのパス
+getdir keyfile
+key = '\xxx-dev.pem'
+strconcat keyfile key
+ 
+;接続先ホスト
+hostname = 'xxx.xxx.xxx.xxx'
+ 
+;パスワード
+;pass = 'xxxxx'
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+;接続コマンドの生成
+msg = hostname
+strconcat msg ':22 /ssh2 /auth=publickey /user='
+strconcat msg username
+strconcat msg ' /keyfile='
+strconcat msg keyfile
+ 
+;接続
+connect msg
